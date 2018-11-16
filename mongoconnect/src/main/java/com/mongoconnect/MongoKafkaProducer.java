@@ -13,13 +13,13 @@ public class MongoKafkaProducer {
     private final Properties properties = new Properties();
 
     public static void main(String[] args) {
-        String mongoDatabaseName = "";
+        String mongoUrl = "";
         String mongoCollectionName = "";
-        String mongoHostName = "";
-        String mongoPort = "";
+        String mongoDatabaseName="";
         String kafkaBrokerList = "";
         String topicName = "";
-        QueryMongo queryMongo = new QueryMongo(mongoDatabaseName, mongoCollectionName, mongoHostName, Integer.parseInt(mongoPort));
+
+        QueryMongo queryMongo = new QueryMongo(mongoUrl,mongoDatabaseName ,mongoCollectionName);
         new MongoKafkaProducer().sendMessageFromMongoTOKafka(queryMongo.findAllQuery(), kafkaBrokerList, topicName);
     }
 
